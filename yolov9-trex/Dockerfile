@@ -3,7 +3,7 @@ FROM nvcr.io/nvidia/pytorch:23.02-py3
 
 # Update and install required dependencies
 RUN apt-get update \
-    && apt-get install -y zip htop screen libgl1-mesa-glx vim libfreetype6-dev  \
+    && apt-get install -y zip htop screen libgl1-mesa-glx vim libfreetype6-dev graphviz  \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

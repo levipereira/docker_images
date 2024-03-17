@@ -23,5 +23,5 @@ docker run --gpus all \
     --ipc=host \
     --ulimit memlock=-1 \
     --ulimit stack=67108864 \
-    -v $(pwd)\videos:/deepstream_python_apps/apps/deepstream-yolov9-triton-server-rtsp-out/videos \
+    -v $(pwd)/videos:/deepstream_python_apps/apps/deepstream-yolo-triton-server-rtsp-out/ds-6.4-ts-yolo-rtsp-out/videos \
     local/nvidia:deepstream_6.4-triton-server-yolo

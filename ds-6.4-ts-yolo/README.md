@@ -1,6 +1,6 @@
 # Building Docker Image for NVIDIA Deepstream and Install Application
 
-This repo provides a set of instructions for building a Docker image tailored for deploying a Deepstream application with support for YOLOv9 model inference served by Triton Server. It outlines the steps required to set up the environment and install necessary dependencies.
+This repo provides a set of instructions for building a Docker image tailored for deploying a Deepstream application with support for YOLO model inference served by Triton Server. It outlines the steps required to set up the environment and install necessary dependencies.
 
 
 This repository build and install the sample app [deepstream-yolov9-triton-server-rtsp-out](https://github.com/levipereira/deepstream-yolov9-triton-server-rtsp-out)
@@ -14,8 +14,8 @@ Note: This script must be executed on the host operating system.
 
 ```bash
 git clone https://github.com/levipereira/docker_images.git
-cd ./docker_images/deepstream-yolov9/
-bash ./build_deepstream_6.4-triton-server.sh
+cd ./docker_images/ds-6.4-ts-yolo/
+bash ./build_ds-6.4_ts.sh
 ```
 
 ### 2. Starting Docker Image 
@@ -34,15 +34,15 @@ The Dockerfile starts with a base image `nvcr.io/nvidia/deepstream:6.4-triton-mu
 ### Installing DeepStream Python Bindings
 The Dockerfile run the script `user_deepstream_python_apps_install.sh` to install DeepStream Python Bindings with a specified version.
 
-### Installing custom parse lib `NvDsInferYolov9EfficientNMS` for Gst-nvinferserver 
-- The repository [nvdsinfer_yolov9_efficient_nms](https://github.com/levipereira/nvdsinfer_yolov9_efficient_nms) is cloned from GitHub into the `/tmp` directory.
+### Installing custom parse lib `NvDsInferYoloEfficientNMS` for Gst-nvinferserver 
+- The repository [nvdsinfer_yolo_efficient_nms](https://github.com/levipereira/nvdsinfer_yolo_efficient_nms) is cloned from GitHub into the `/tmp` directory.
 - The contents of the repository are then copied to the DeepStream sources directory (`/opt/nvidia/deepstream/deepstream/sources/libs/`).
 - The custom library is built and installed using the provided Makefile.
 
-### Install Application `deepstream-yolov9-triton-server-rtsp-out` to Docker
+### Install Application `deepstream-yolo-triton-server-rtsp-out` to Docker
 - A directory `/deepstream_python_apps/apps/` is created within the Docker image.
-- Git Clone `https://github.com/levipereira/deepstream-yolov9-triton-server-rtsp-out`
-- The DeepStream application files (`deepstream-yolov9-triton-server-rtsp-out`) are copied into the created directory.
+- Git Clone `https://github.com/levipereira/deepstream-yolo-triton-server-rtsp-out`
+- The DeepStream application files (`deepstream-yolo-triton-server-rtsp-out`) are copied into the created directory.
 - The working directory is set to the copied application directory.
 
  
